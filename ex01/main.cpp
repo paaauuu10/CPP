@@ -21,7 +21,7 @@ int main(void)
         if (input == "ADD")
         	phone.add();
 		else if (input == "SEARCH") 
-            std::cout << "What do u want to search?" << std::endl;
+            phone.search();
         else if (input == "EXIT")
             loop = false;
         else
