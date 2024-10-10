@@ -21,3 +21,24 @@ void Contact::setDarkestSecret(std::string str)
 {
 	this->DarkestSecret = str;
 }
+
+std::string Contact::getFirstName(void) const
+{
+	return (this->FirstName);
+}
+std::string Contact::getLastName(void) const
+{
+	return (this->LastName);
+}
+std::string Contact::getNickname(void) const
+{
+	return (this->Nickname);
+}
+std::string Contact::getPhoneNumber(void) const
+{
+	return (this->PhoneNumber);
+}
+std::string Contact::getDarkestSecret(void) const
+{
+	return (this->DarkestSecret);
+}

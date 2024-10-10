@@ -1,0 +1,3 @@
+Revisar perque hi ha gestio de memoria.
+La resta crec que esta be de moment.
+Ordenar les funcions i els arxius.
