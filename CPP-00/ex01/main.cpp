@@ -8,25 +8,20 @@ int main(void)
 
     while (loop)
     {
-        std::cout << "\033[1;32m";
+     
+        std::cout << "\033[1;32m";  // 1 es para negrita, 32 es el código de color verde
         std::cout << "SELECT --> ADD, SEARCH or EXIT" << std::endl;
         std::cout << "\033[0m";
-        std::getline(std::cin, input);
+        std::cin >> input;
         if (std::cin.fail())
         {
             std::cout << "Error" << std::endl;
             return (1);
         }
         if (input == "ADD")
-        {
-        	if (phone.add() == 1)
-            return (1);
-        }
-        else if (input == "SEARCH")
-        {
-            if (phone.search() == 1)
-                return (1);
-        }
+        	phone.add();
+		else if (input == "SEARCH") 
+            phone.search();
         else if (input == "EXIT")
             loop = false;
         else
