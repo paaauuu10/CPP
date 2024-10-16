@@ -37,11 +37,27 @@ void Harl::error(void)
 
 void Harl::complain(std::string level)
 {
-    void (Harl::*f[4])(void) = {&Harl::debug, &Harl::info, &Harl::warning, &Harl::error};
     std::string harl_pos[4] = {"DEBUG", "INFO", "WARNING", "ERROR"};
-    for (int i = 0; i < 4; i++)
+    int i = 0;
+    while (i < 4)
     {
         if (level == harl_pos[i])
-            (this->*f[i])();
+            break;
+        i++;
     }
+    switch(i)
+    {
+        case 0:
+            debug();
+        case 1:
+            info();
+        case 2:
+            warning();
+        case 3:
+            error();
+            break;
+        default:
+            std::cout << "This is not a complain command!!" << std::endl << "ONLY ACCEPTED: DEBUG, INFO, WARNING, ERROR" << std::endl << std::endl;
+    }
+   
 }
