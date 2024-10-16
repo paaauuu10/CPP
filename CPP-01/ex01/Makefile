@@ -26,7 +26,7 @@ dir:
 	@mkdir -p $(D_OBJ)
 
 # Construcción de los objetos
-$(D_OBJ)/%.o: %.cpp Makefile Zombie.hpp
+$(D_OBJ)/%.o: %.cpp Makefile
 	@$(CPP) $(FLAGS) -MMD -MP -c $< -o $@
 	@echo "$(GREEN)[OK]		$(BLUE).o Correctly done!"
 
