@@ -1,5 +1,6 @@
 #include <iostream>
 #include <fstream>
+#include <string>
 
 void    replacefile(std::ifstream &infile, const std::string &s1, const std::string &s2, std::ofstream &outfile)
 {
@@ -33,13 +34,13 @@ int main(int argc, char **argv)
     std::string s2 = argv[3];
     std::string ofilename = filename + ".replace";
 
-    std::ifstream infile(filename);
+    std::ifstream infile(filename.c_str());
     if (!infile.is_open())
     {
         std::cout << "Not possible to open the inputfile: " << filename << std::endl;
         return (1);
     } 
-    std::ofstream outfile(ofilename, std::ios::out | std::ios::trunc);
+    std::ofstream outfile(ofilename.c_str(), std::ios::out | std::ios::trunc);
     if (!outfile.is_open())
     {
         std::cout << "Not possible to open the outputfile: " << ofilename << std::endl;

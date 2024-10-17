@@ -4,7 +4,7 @@
 HumanB::HumanB(std::string name)
 {
     this->_name = name;
-    this->_arma = nullptr;
+    this->_arma = NULL;
 }
 HumanB::~HumanB(void)
 {

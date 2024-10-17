@@ -6,7 +6,7 @@ void randomChump(std::string name);
 
 int main() {
     
-    int N = 2;
+    int N = 25;
     Zombie *Zombie_horde = zombieHorde(N, "Pau");
     for (int i = 0; i < N; i++)
         Zombie_horde[i].announce();
