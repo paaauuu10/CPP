@@ -24,12 +24,12 @@ class Fixed
         int     toInt(void)const;
 
         //Compare operations
-        bool operator>(conts Fixed &other)const;
-        bool operator<(conts Fixed &other)const;
-        bool operator>=(conts Fixed &other)const;
-        bool operator<=(conts Fixed &other)const;
-        bool operator==(conts Fixed &other)const;
-        bool operator!=(conts Fixed &other)const;
+        bool operator>(const Fixed &other)const;
+        bool operator<(const Fixed &other)const;
+        bool operator>=(const Fixed &other)const;
+        bool operator<=(const Fixed &other)const;
+        bool operator==(const Fixed &other)const;
+        bool operator!=(const Fixed &other)const;
 
         //Aritmetic operations
         Fixed operator+(const Fixed &other)const;  
