@@ -1,4 +1,4 @@
-NAME = ScavTrap
+NAME = FragTrap
 
 GREEN = \033[1;32m
 YELLOW = \033[1;33m
@@ -10,7 +10,7 @@ ORIGINAL = \033[0m
 
 CPP = c++
 FLAGS = -Wall -Wextra -Werror -std=c++98
-SRC = main.cpp ClapTrap.cpp ScavTrap.cpp
+SRC = main.cpp ClapTrap.cpp ScavTrap.cpp FragTrap.cpp
 RM = rm -rf
 
 #DIRECTORIES
