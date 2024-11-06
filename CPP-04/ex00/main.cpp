@@ -6,7 +6,7 @@
 /*   By: pbotargu <pbotargu@student.42barcelona.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/31 11:40:26 by pbotargu          #+#    #+#             */
-/*   Updated: 2024/10/31 12:13:00 by pbotargu         ###   ########.fr       */
+/*   Updated: 2024/11/06 11:33:28 by pbotargu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -52,6 +52,9 @@ int main()
     
     const WrongAnimal* wCat = new WrongCat();
     std::cout << std::endl;
+
+    const WrongCat *cat = new WrongCat();
+    std::cout << std::endl;
     
     std::cout << wAnimal->getType() << ": "; 
     wAnimal->makeSound();
@@ -61,10 +64,18 @@ int main()
     wCat->makeSound();
     std::cout << std::endl;
 
+    std::cout << cat->getType() << ": "; 
+    cat->makeSound();
+    std::cout << std::endl;
+
     delete wAnimal;
     std::cout << std::endl;
     
     delete wCat;
     std::cout << std::endl;
+
+    delete cat;
+    std::cout << std::endl;
+    
     return (0); 
 }

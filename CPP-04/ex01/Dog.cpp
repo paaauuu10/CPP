@@ -6,7 +6,7 @@
 /*   By: pbotargu <pbotargu@student.42barcelona.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/31 11:40:22 by pbotargu          #+#    #+#             */
-/*   Updated: 2024/11/05 15:38:36 by pbotargu         ###   ########.fr       */
+/*   Updated: 2024/11/06 11:42:40 by pbotargu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,6 +31,9 @@ Dog &Dog::operator=(const Dog &other)
     std::cout << "Dog equal operator called" << std::endl;
     if (this != &other)
         this->_type = other._type;
+    if (this->_brain)
+        delete this->_brain;
+    this->_brain = new Brain(*other._brain);
     return (*this);
 }
 
