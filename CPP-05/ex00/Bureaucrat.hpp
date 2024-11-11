@@ -6,7 +6,7 @@
 /*   By: pbotargu <pbotargu@student.42barcelona.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/11 09:36:21 by pbotargu          #+#    #+#             */
-/*   Updated: 2024/11/11 10:47:14 by pbotargu         ###   ########.fr       */
+/*   Updated: 2024/11/11 16:28:06 by pbotargu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -48,6 +48,6 @@ class Bureaucrat
         };
 };
 
-std::ostream &operator<<(std::ostream &out, const Bureaucrat &bur);
+std::ostream &operator<<(std::ostream &out, const Bureaucrat &bureau);
 
 #endif

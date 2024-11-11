@@ -6,7 +6,7 @@
 /*   By: pbotargu <pbotargu@student.42barcelona.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/11 09:36:19 by pbotargu          #+#    #+#             */
-/*   Updated: 2024/11/11 12:54:25 by pbotargu         ###   ########.fr       */
+/*   Updated: 2024/11/11 16:28:20 by pbotargu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -79,8 +79,8 @@ const char *Bureaucrat::GradeTooLowException::what(void) const throw()
     return ("That's impossible! Grade can't be a bigger integer than 150");
 }
 
-std::ostream &operator<<(std::ostream &out, const Bureaucrat &bur)
+std::ostream &operator<<(std::ostream &out, const Bureaucrat &bureau)
 {
-	out << bur.getName() << ", bureaucrat grade " << bur.getGrade() << ".";
+	out << bureau.getName() << ", bureaucrat grade " << bureau.getGrade() << ".";
 	return (out);
 }

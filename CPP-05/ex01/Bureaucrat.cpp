@@ -6,7 +6,7 @@
 /*   By: pbotargu <pbotargu@student.42barcelona.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/11 09:36:19 by pbotargu          #+#    #+#             */
-/*   Updated: 2024/11/11 12:56:57 by pbotargu         ###   ########.fr       */
+/*   Updated: 2024/11/11 17:06:44 by pbotargu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -79,8 +79,15 @@ const char *Bureaucrat::GradeTooLowException::what(void) const throw()
     return ("That's impossible! Grade can't be a bigger integer than 150");
 }
 
-std::ostream &operator<<(std::ostream &out, const Bureaucrat &bur)
+void Bureaucrat::signForm(Form &f)
 {
-	out << bur.getName() << ", bureaucrat grade " << bur.getGrade() << ".";
+    if (f.getSigned() == true)
+        std::cout << this->_name << " signed " << f.getName() << std::endl;
+    else
+        std::cout << this->_name << " couldn't sign " << f.getName() << " because " << this->_name << "'s level isn't high enough." << std::endl; 
+}
+std::ostream &operator<<(std::ostream &out, const Bureaucrat &bureau)
+{
+	out << bureau.getName() << ", bureaucrat grade " << bureau.getGrade() << ".";
 	return (out);
 }

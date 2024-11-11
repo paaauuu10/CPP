@@ -6,7 +6,7 @@
 /*   By: pbotargu <pbotargu@student.42barcelona.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/11 12:24:22 by pbotargu          #+#    #+#             */
-/*   Updated: 2024/11/11 13:24:09 by pbotargu         ###   ########.fr       */
+/*   Updated: 2024/11/11 17:03:09 by pbotargu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,6 +15,9 @@
 
 #include <iostream>
 #include <stdexcept>
+#include "Bureaucrat.hpp"
+
+class Bureaucrat;
 
 class Form
 {
@@ -31,6 +34,13 @@ class Form
         Form &operator=(const Form &other);
         ~Form();
         
+        std::string getName(void)const;
+        bool getSigned(void)const;
+        int getGradeS()const;
+        int getGradeE()const;
+
+        void beSigned(const Bureaucrat &Bureau);
+        
         class GradeTooHighException: public std::exception
         {
             public:
@@ -41,6 +51,8 @@ class Form
             public:
                 virtual const char *what(void) const throw();
         };
-        
 };
+
+std::ostream &operator<<(std::ostream &out, const Form &f);
+
 #endif

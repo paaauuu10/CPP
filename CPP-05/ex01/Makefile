@@ -6,7 +6,7 @@
 #    By: pbotargu <pbotargu@student.42barcelona.    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/10/31 11:40:30 by pbotargu          #+#    #+#              #
-#    Updated: 2024/11/11 10:47:44 by pbotargu         ###   ########.fr        #
+#    Updated: 2024/11/11 16:56:26 by pbotargu         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -21,8 +21,8 @@ BLUE = \033[38;5;75m
 ORIGINAL = \033[0m
 
 CPP = c++
-FLAGS = -Wall -Wextra -Werror -std=c++98
-SRC = main.cpp Bureaucrat.cpp
+FLAGS = -Wall -Wextra -Werror -std=c++98 -g
+SRC = main.cpp Bureaucrat.cpp Form.cpp
 RM = rm -rf
 
 #DIRECTORIES

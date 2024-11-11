@@ -6,12 +6,11 @@
 /*   By: pbotargu <pbotargu@student.42barcelona.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/11 12:24:20 by pbotargu          #+#    #+#             */
-/*   Updated: 2024/11/11 13:30:04 by pbotargu         ###   ########.fr       */
+/*   Updated: 2024/11/11 17:06:16 by pbotargu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "Form.hpp"
-#include "Bureaucrat.hpp"
 
 Form::Form(): _name("Default Form"), _gradeSign(150), _gradeExec(150)
 {
@@ -41,8 +40,55 @@ Form &Form::operator=(const Form &other)
         this->_signed = other._signed;
     return (*this);   
 }
+
 Form::~Form()
 {
     std::cout << "Form destructor called" << std::endl;
 };
+
+void    Form::beSigned(const Bureaucrat &Bureau)
+{
+    if (Bureau.getGrade() <= this->_gradeSign)
+        this->_signed = true;
+}
+const char *Form::GradeTooHighException::what(void) const throw()
+{
+    return ("Too high grade!");
+}
+
+const char *Form::GradeTooLowException::what(void) const throw()
+{
+    return ("Too low grade!");
+}
+
+bool Form::getSigned(void)const
+{
+    return (this->_signed);
+}
+
+std::string Form::getName()const
+{
+    return (this->_name);
+}
+
+int Form::getGradeS()const
+{
+    return (this->_gradeSign);
+}
+
+int Form::getGradeE()const
+{
+    return (this->_gradeExec);
+}
+
+std::ostream &operator<<(std::ostream &out, const Form &f)
+{
+	out << f.getName() << ", form grade required to sign is " << f.getGradeS()
+		<< " and grade required to execute is " << f.getGradeE() << ". " << std::endl;
+	if (f.getSigned())
+		out << "It is already signed" << std::endl;
+	else
+		out << "It hasn't signed yet" << std::endl;
+	return (out);
+}
 
