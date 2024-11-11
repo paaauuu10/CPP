@@ -6,7 +6,7 @@
 /*   By: pbotargu <pbotargu@student.42barcelona.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/11 09:36:19 by pbotargu          #+#    #+#             */
-/*   Updated: 2024/11/11 09:47:52 by pbotargu         ###   ########.fr       */
+/*   Updated: 2024/11/11 12:54:25 by pbotargu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,11 +16,12 @@ Bureaucrat::Bureaucrat(void) : _name("Default"), _grade(150)
 {
    std::cout << "Default constructor called" << std::endl;
 }
-Bureaucrat::Bureaucrat(std::string name, int grade) : _name(name), _grade(grade)
+Bureaucrat::Bureaucrat(std::string name, int grade) : _name(name)
 {
    std::cout << "Default constructor called" << std::endl;
+   this->setGrade(grade);
 }
-Bureaucrat::Bureaucrat(const Bureaucrat &other)
+Bureaucrat::Bureaucrat(const Bureaucrat &other): _name(other._name)
 {
     std::cout << "Copy constructor called" << std::endl;
     *this = other;
@@ -35,7 +36,51 @@ Bureaucrat &Bureaucrat::operator=(const Bureaucrat &other)
     return (*this);
 }
 
-~Bureaucrat()
+Bureaucrat::~Bureaucrat()
 {
     std::cout << this->_name << " destructor called" << std::endl; 
+}
+
+std::string Bureaucrat::getName()const
+{
+    return (this->_name);
+}
+int Bureaucrat::getGrade()const
+{
+    return (this->_grade);   
+}
+
+void Bureaucrat::setGrade(int grade)
+{
+    if (grade < 1)
+        throw (Bureaucrat::GradeTooHighException());
+    else if (grade > 150)
+        throw (Bureaucrat::GradeTooLowException());
+    else
+        this->_grade = grade; 
+}
+void Bureaucrat::incrementGrade()
+{
+    this->setGrade(this->_grade - 1);        
+}
+
+void Bureaucrat::decrementGrade()
+{
+    this->setGrade(this->_grade + 1);        
+}
+
+const char *Bureaucrat::GradeTooHighException::what(void) const throw()
+{
+    return ("That's impossible! Grade can´t be a lower integer than 1");
+}
+
+const char *Bureaucrat::GradeTooLowException::what(void) const throw()
+{
+    return ("That's impossible! Grade can't be a bigger integer than 150");
+}
+
+std::ostream &operator<<(std::ostream &out, const Bureaucrat &bur)
+{
+	out << bur.getName() << ", bureaucrat grade " << bur.getGrade() << ".";
+	return (out);
 }

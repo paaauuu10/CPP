@@ -6,11 +6,11 @@
 #    By: pbotargu <pbotargu@student.42barcelona.    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/10/31 11:40:30 by pbotargu          #+#    #+#              #
-#    Updated: 2024/11/11 09:36:02 by pbotargu         ###   ########.fr        #
+#    Updated: 2024/11/11 12:23:41 by pbotargu         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
-NAME = Interface&Recap
+NAME = Bureaucrat
 
 GREEN = \033[1;32m
 YELLOW = \033[1;33m
