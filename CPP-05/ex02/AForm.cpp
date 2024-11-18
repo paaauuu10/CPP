@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   AForm.cpp                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: pbotargu <pbotargu@student.42barcelona.    +#+  +:+       +#+        */
+/*   By: pbotargu <pbotargu@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/11 12:24:20 by pbotargu          #+#    #+#             */
-/*   Updated: 2024/11/13 16:35:04 by pbotargu         ###   ########.fr       */
+/*   Updated: 2024/11/18 15:57:38 by pbotargu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -50,6 +50,8 @@ void    AForm::beSigned(const Bureaucrat &Bureau)
 {
     if (Bureau.getGrade() <= this->_gradeSign)
         this->_signed = true;
+    else
+        throw (AForm::GradeTooLowException());
 }
 const char *AForm::GradeTooHighException::what(void) const throw()
 {

@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   Bureaucrat.hpp                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: pbotargu <pbotargu@student.42barcelona.    +#+  +:+       +#+        */
+/*   By: pbotargu <pbotargu@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/11 09:36:21 by pbotargu          #+#    #+#             */
-/*   Updated: 2024/11/13 16:29:41 by pbotargu         ###   ########.fr       */
+/*   Updated: 2024/11/18 15:30:28 by pbotargu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,6 +40,7 @@ class Bureaucrat
         void setGrade(int grade);
 
         void signForm(AForm &f);
+        void executeForm(AForm const &form);
         
         class GradeTooHighException: public std::exception
         {
