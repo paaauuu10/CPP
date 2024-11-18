@@ -6,7 +6,7 @@
 /*   By: pbotargu <pbotargu@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/13 15:39:24 by pbotargu          #+#    #+#             */
-/*   Updated: 2024/11/18 15:23:03 by pbotargu         ###   ########.fr       */
+/*   Updated: 2024/11/18 17:21:00 by pbotargu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,12 +14,12 @@
 #include <cstdlib>
 #include <ctime>
    
-RobotomyRequestForm::RobotomyRequestForm(): AForm("RobotomyRequestForm", 25, 5)
+RobotomyRequestForm::RobotomyRequestForm(): AForm("RobotomyRequestForm", 72, 45)
 {
     std::cout << "RobotomyRequestForm deafult constructor" << std::endl;        
     this->_target = "Undefined";
 }
-RobotomyRequestForm::RobotomyRequestForm(std::string target): AForm("RobotomyRequestForm", 25, 5)
+RobotomyRequestForm::RobotomyRequestForm(std::string target): AForm("RobotomyRequestForm", 72, 45)
 {
     std::cout << "RobotomyRequestForm target constructor" << std::endl;
     this->_target = target;

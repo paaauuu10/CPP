@@ -6,7 +6,7 @@
 /*   By: pbotargu <pbotargu@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/11 12:24:20 by pbotargu          #+#    #+#             */
-/*   Updated: 2024/11/18 15:57:38 by pbotargu         ###   ########.fr       */
+/*   Updated: 2024/11/18 17:27:37 by pbotargu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,8 +30,7 @@ AForm::AForm(std::string name, int gradeSign, int gradeExec): _name(name), _grad
 AForm::AForm(const AForm &other): _name(other._name), _gradeSign(other._gradeSign), _gradeExec(other._gradeExec)
 {
     std::cout << "AForm Copy construcor called" << std::endl;
-    //CAL COPIAR EL BOOLEA? REVISAR SUBJECT
-    // this->_signed = other._signed;
+    this->_signed = other._signed;
 }
 AForm &AForm::operator=(const AForm &other)
 {
@@ -97,6 +96,7 @@ void AForm::execute(const Bureaucrat &executor)const
     else
     {
         std::cout << executor.getName() << " executed " << this->_name << std::endl;
+        this->executeAction();
         //falta funcio executar!
     }
 }
