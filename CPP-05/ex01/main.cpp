@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   main.cpp                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: pbotargu <pbotargu@student.42barcelona.    +#+  +:+       +#+        */
+/*   By: pbotargu <pbotargu@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/11 13:39:32 by pbotargu          #+#    #+#             */
-/*   Updated: 2024/11/11 17:03:56 by pbotargu         ###   ########.fr       */
+/*   Updated: 2024/11/19 12:35:13 by pbotargu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,11 +15,10 @@
 
 int main(void)
 {
-	Bureaucrat b1("Uri", 51);
-	Form form("Contracte", 50, 10);
-	
+	Bureaucrat b1("Pau", 51);
+	Form form("Contracte", 50, 10);	
 	std::cout << form << std::endl;
-	std::cout << "Probamos de firmar el Form:" << std::endl;
+	std::cout << "Firmem Form: " << std::endl;
 	try 
 	{
 		form.beSigned(b1);
@@ -29,10 +28,10 @@ int main(void)
 	{
 		std::cerr << e.what() << std::endl;
 	}
-	std::cout << "Incrementamos " << b1.getName() << std::endl;
+	std::cout << "Incrementem: " << b1.getName() << std::endl;
 	b1.incrementGrade();
 	std::cout << b1 << std::endl << std::endl;
-	std::cout << "Lo intentamos de nuevo:" << std::endl;
+	std::cout << "Firmem Form:" << std::endl;
 	try 
 	{
 		form.beSigned(b1);

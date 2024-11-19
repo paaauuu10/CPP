@@ -6,7 +6,7 @@
 /*   By: pbotargu <pbotargu@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/11 13:39:32 by pbotargu          #+#    #+#             */
-/*   Updated: 2024/11/18 17:22:41 by pbotargu         ###   ########.fr       */
+/*   Updated: 2024/11/19 12:40:58 by pbotargu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,16 +19,15 @@
 
 int main(void)
 {
-	Intern	novato;
+	Intern	intern0;
 	AForm	*form;
 	Bureaucrat				bureucrat("Uri", 45);
 	
 
 	std::cout << std::endl;
-	std::cout << "Turn: " << bureucrat.getName() << std::endl; 
 	try
 	{
-		form = novato.makeForm("shrubbery creation", "home");
+		form = intern0.makeForm("shrubbery creation", "home");
 		if (form != NULL)
 		{
 			bureucrat.signForm(*form);
@@ -36,7 +35,7 @@ int main(void)
 			delete form;
 		}
 		std::cout << std::endl;
-		form = novato.makeForm("robotomy request", "Bender");
+		form = intern0.makeForm("robotomy request", "Bender");
 		if (form != NULL)
 		{
 			bureucrat.signForm(*form);
@@ -44,7 +43,7 @@ int main(void)
 			delete form;
 		}
 		std::cout << std::endl;
-		form = novato.makeForm("presidential pardon", "Jefe");
+		form = intern0.makeForm("presidential pardon", "Jefe");
 		if (form != NULL)
 		{
 			bureucrat.signForm(*form);

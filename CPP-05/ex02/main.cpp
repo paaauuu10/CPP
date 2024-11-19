@@ -6,7 +6,7 @@
 /*   By: pbotargu <pbotargu@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/11 13:39:32 by pbotargu          #+#    #+#             */
-/*   Updated: 2024/11/18 15:29:17 by pbotargu         ###   ########.fr       */
+/*   Updated: 2024/11/19 12:37:39 by pbotargu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,16 +17,16 @@
 
 int main(void)
 {
-	ShrubberyCreationForm	shrubberry("Home");
-	RobotomyRequestForm		robotomy("Cerebro");
-	PresidentialPardonForm	presidential("President");
+	ShrubberyCreationForm	shrubberry("shru");
+	RobotomyRequestForm		robotomy("robo");
+	PresidentialPardonForm	presidential("pres");
 
-	Bureaucrat				bureucrat("Uri", 2);
-	Bureaucrat				bur2("A", 71);
-	Bureaucrat				bur3("B", 150);
+	Bureaucrat				bureucrat("Pau", 2);
+	Bureaucrat				bureaucrat2("Alba", 71);
+	Bureaucrat				bureaucrat3("Botargues", 150);
 
 	std::cout << std::endl;
-	std::cout << "Turn: " << bureucrat.getName() << std::endl; 
+	std::cout << "Torn: " << bureucrat.getName() << std::endl; 
 	try
 	{
 		bureucrat.signForm(shrubberry);
@@ -43,34 +43,34 @@ int main(void)
 		std::cerr << e.what() << std::endl;
 	}
 	std::cout << std::endl;
-	std::cout << "Turn: " << bur2.getName() << std::endl;
+	std::cout << "Torn: " << bureaucrat2.getName() << std::endl;
 	try
 	{
-		bur2.signForm(shrubberry);
-		bur2.executeForm(shrubberry);
+		bureaucrat2.signForm(shrubberry);
+		bureaucrat2.executeForm(shrubberry);
 		std::cout << std::endl;
-		bur2.signForm(robotomy);
-		bur2.executeForm(robotomy);
+		bureaucrat2.signForm(robotomy);
+		bureaucrat2.executeForm(robotomy);
 		std::cout << std::endl;
-		bur2.signForm(presidential);
-		bur2.executeForm(presidential);
+		bureaucrat2.signForm(presidential);
+		bureaucrat2.executeForm(presidential);
 	}
 	catch(const std::exception& e)
 	{
 		std::cerr << e.what() << std::endl;
 	}
 	std::cout << std::endl;
-	std::cout << "Turn: " << bur3.getName() << std::endl;
+	std::cout << "Torn: " << bureaucrat3.getName() << std::endl;
 	try
 	{
-		bur3.signForm(shrubberry);
-		bur3.executeForm(shrubberry);
+		bureaucrat3.signForm(shrubberry);
+		bureaucrat3.executeForm(shrubberry);
 		std::cout << std::endl;
-		bur3.signForm(robotomy);
-		bur3.executeForm(robotomy);
+		bureaucrat3.signForm(robotomy);
+		bureaucrat3.executeForm(robotomy);
 		std::cout << std::endl;
-		bur3.signForm(presidential);
-		bur3.executeForm(presidential);
+		bureaucrat3.signForm(presidential);
+		bureaucrat3.executeForm(presidential);
 	}
 	catch(const std::exception& e)
 	{

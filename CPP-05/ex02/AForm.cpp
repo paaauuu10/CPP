@@ -6,7 +6,7 @@
 /*   By: pbotargu <pbotargu@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/11 12:24:20 by pbotargu          #+#    #+#             */
-/*   Updated: 2024/11/18 17:28:57 by pbotargu         ###   ########.fr       */
+/*   Updated: 2024/11/19 12:38:45 by pbotargu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -105,9 +105,9 @@ std::ostream &operator<<(std::ostream &out, const AForm &f)
 	out << f.getName() << ", form grade required to sign is " << f.getGradeS()
 		<< " and grade required to execute is " << f.getGradeE() << ". " << std::endl;
 	if (f.getSigned())
-		out << "It is already signed" << std::endl;
+		out << "It has already been signed." << std::endl;
 	else
-		out << "It hasn't signed yet" << std::endl;
+		out << "It hasn't been signed yet." << std::endl;
 	return (out);
 }
 
