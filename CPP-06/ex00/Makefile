@@ -6,7 +6,7 @@
 #    By: pbotargu <marvin@42.fr>                    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/11/20 12:51:46 by pbotargu          #+#    #+#              #
-#    Updated: 2024/11/20 12:52:02 by pbotargu         ###   ########.fr        #
+#    Updated: 2024/11/20 12:52:34 by pbotargu         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -23,7 +23,7 @@ ORIGINAL = \033[0m
 
 CPP = c++
 FLAGS = -Wall -Wextra -Werror -std=c++98 -g
-SRC = main.cpp Intern.cpp Bureaucrat.cpp AForm.cpp ShrubberyCreationForm.cpp RobotomyRequestForm.cpp PresidentialPardonForm.cpp
+SRC = main.cpp ScalarConverter.cpp
 RM = rm -rf
 
 #DIRECTORIES
