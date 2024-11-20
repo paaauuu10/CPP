@@ -6,7 +6,7 @@
 /*   By: pbotargu <pbotargu@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/11 13:39:32 by pbotargu          #+#    #+#             */
-/*   Updated: 2024/11/19 12:37:39 by pbotargu         ###   ########.fr       */
+/*   Updated: 2024/11/20 11:33:38 by pbotargu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,6 +26,7 @@ int main(void)
 	Bureaucrat				bureaucrat3("Botargues", 150);
 
 	std::cout << std::endl;
+	std::cout << "----------------------------------" << std::endl; 
 	std::cout << "Torn: " << bureucrat.getName() << std::endl; 
 	try
 	{
@@ -42,7 +43,7 @@ int main(void)
 	{
 		std::cerr << e.what() << std::endl;
 	}
-	std::cout << std::endl;
+	std::cout << "----------------------------------" << std::endl; 
 	std::cout << "Torn: " << bureaucrat2.getName() << std::endl;
 	try
 	{
@@ -59,7 +60,7 @@ int main(void)
 	{
 		std::cerr << e.what() << std::endl;
 	}
-	std::cout << std::endl;
+	std::cout << "----------------------------------" << std::endl; 
 	std::cout << "Torn: " << bureaucrat3.getName() << std::endl;
 	try
 	{
@@ -76,5 +77,6 @@ int main(void)
 	{
 		std::cerr << e.what() << std::endl;
 	}
+	std::cout << "----------------------------------" << std::endl; 
 	std::cout << std::endl;
 }

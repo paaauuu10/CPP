@@ -6,7 +6,7 @@
 /*   By: pbotargu <pbotargu@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/11 12:24:20 by pbotargu          #+#    #+#             */
-/*   Updated: 2024/11/19 12:31:18 by pbotargu         ###   ########.fr       */
+/*   Updated: 2024/11/20 10:56:51 by pbotargu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -83,8 +83,8 @@ int Form::getGradeE()const
 
 std::ostream &operator<<(std::ostream &out, const Form &f)
 {
-	out << f.getName() << ", form grade required to sign is " << f.getGradeS()
-		<< " and grade required to execute is " << f.getGradeE() << ". " << std::endl;
+	out << f.getName() << " requires grade " << f.getGradeS()
+		<< " to sign and grade "  << f.getGradeE() << " to execute." << std::endl;
 	if (f.getSigned())
 		out << "It has already been signed." << std::endl;
 	else
