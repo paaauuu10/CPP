@@ -67,10 +67,11 @@ void ScalarConverter::printDouble(double d){
 	
 	char c = static_cast<char>(d);
 
-	if (d < DBL_MIN || d > DBL_MAX){
+	/*if (d < DBL_MIN || d > DBL_MAX){
 		impossible();
 		return;
-	}
+	}*/
+	
 	if (d >= 0 && d <= 127 && std::isprint(c))
 		std::cout << "char: '" << c << "'" << std::endl;
 	else	
@@ -132,8 +133,6 @@ void ScalarConverter::convert(std::string str){
 		}
 		printDouble(atof(str.c_str()));	
 	}
-
-	
 }
 
 ScalarConverter::ScalarConverter() {}
