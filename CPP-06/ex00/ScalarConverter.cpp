@@ -48,6 +48,8 @@ void ScalarConverter::printInt(std::string str){
             char c = static_cast<char>(temp);
 			if (temp >= 0 && temp <= 127 && std::isprint(c))
 				std::cout << "char: '" << c << "'" << std::endl;
+			else
+				std::cout << "char: Non displayable" << std::endl;
             std::cout << "int: " << temp << std::endl;
             std::cout << "float: " << std::fixed << std::setprecision(1) << static_cast<float>(temp) << "f" << std::endl;
             std::cout << "double: " << std::fixed << std::setprecision(1) << static_cast<double>(temp) << std::endl;
