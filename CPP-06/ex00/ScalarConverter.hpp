@@ -12,6 +12,8 @@ public:
     static void	printInfinite(std::string str);
     static void	printInt(std::string str);
     static void printChar(char c);
+    static void printDouble(double d);
+    static void impossible();
     
 
 private:
