@@ -10,6 +10,7 @@ class ScalarConverter {
 public:
     static void convert(std::string str);
     static void	printInfinite(std::string str);
+    static void	printInt(std::string str);
     static void printChar(char c);
     
 
