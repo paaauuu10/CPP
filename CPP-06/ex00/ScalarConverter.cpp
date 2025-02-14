@@ -78,13 +78,13 @@ void ScalarConverter::printFloat(std::string str){
         impossible();
         return;
     }
-    float f = static_cast<float>(std::atof(str.c_str()));
+    float f = static_cast<float>(atof(str.c_str()));
     char c = static_cast<char>(f);
     if (f >= 0 && f <= 127 && std::isprint(c))
         std::cout << "char: '" << c << "'" << std::endl;
     else	
         std::cout << "char: Non displayable" << std::endl;
-    if (f >= INT_MIN && f <= INT_MAX)
+    if (d >= INT_MIN && d <= INT_MAX)
         std::cout << "int: " << static_cast<int>(f) << std::endl;
     else 
         std::cout << "int: impossible" << std::endl;
