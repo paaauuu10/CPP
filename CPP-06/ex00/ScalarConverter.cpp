@@ -57,10 +57,6 @@ void ScalarConverter::printInt(std::string str){
 
 void ScalarConverter::printDouble(double d){
     char c = static_cast<char>(d);
-    if (d < -DBL_MAX || d > DBL_MAX || isinf(d) || isnan(d)){
-        impossible();
-        return;
-    }
     if (d >= 0 && d <= 127 && std::isprint(c))
         std::cout << "char: '" << c << "'" << std::endl;
     else	
@@ -70,7 +66,7 @@ void ScalarConverter::printDouble(double d){
     else 
         std::cout << "int: impossible" << std::endl;
     if (d >= -FLT_MAX && d <= FLT_MAX)
-        std::cout << "float: " << std::fixed << std::showpoint << std::setprecision(1) << static_cast<float>(d) << "f" << std::endl;
+        std::cout << "float: " << std::fixed << std::setprecision(1) << static_cast<float>(d) << "f" << std::endl;
     else
         std::cout << "float: impossible" << std::endl;
     std::cout << "double: " << std::fixed << std::setprecision(1) << d << std::endl;  
