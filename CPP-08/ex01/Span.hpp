@@ -4,31 +4,40 @@
 # include <iostream>
 # include <vector>
 # include <algorithm>
+#include <iterator> 
 
 class Span
 {
 	private:
-		unsigned int 		N;
+		unsigned int 		_N;
 		std::vector<int>	*numbers;
 		unsigned int size();
 
 	public:
 		Span();
 		Span(unsigned int N);
-		Span(const Span &cpy);
-		Span &operator=(const Span &cpy);
+		Span(const Span &other);
+		Span &operator=(const Span &other);
 		~Span();
 
 		void addNumber(int n);
 		int shortestSpan();
 		int longestSpan();
+		//void addNumbers(std::vector<int> begin, std::vector<int> end);
+        void addNumbers(std::vector<int>::iterator begin, std::vector<int>::iterator end);
 
-        template<typename InputIterator>
-        void addNumbers(InputIterator begin, InputIterator end){
-            if (std::distance(begin, end) + numbers.size() > N)
-                throw std::out_of_range("No hay espacio suficiente para agregar todos los números del rango");
-            numbers.insert(numbers.end(), begin, end);
-        }
-}
+
+
+		class FullVectorException : public std::exception
+		{
+			public:
+				virtual const char *what() const throw();
+		};
+		class SpanIsNotBigEnoughException : public std::exception
+		{
+			public:
+				virtual const char *what() const throw();
+		};
+};
 
 #endif
