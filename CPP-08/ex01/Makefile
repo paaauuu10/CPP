@@ -3,10 +3,10 @@
 #                                                         :::      ::::::::    #
 #    Makefile                                           :+:      :+:    :+:    #
 #                                                     +:+ +:+         +:+      #
-#    By: pbotargu <pbotargu@student.42barcelona.    +#+  +:+       +#+         #
+#    By: pbotargu <pbotargu@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/11/20 12:51:46 by pbotargu          #+#    #+#              #
-#    Updated: 2025/02/13 17:29:00 by pbotargu         ###   ########.fr        #
+#    Updated: 2025/02/17 15:40:30 by pbotargu         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -23,7 +23,7 @@ ORIGINAL = \033[0m
 
 CPP = c++
 FLAGS = -Wall -Wextra -Werror -std=c++98 -g
-SRC = main.cpp
+SRC = main.cpp Span.cpp
 RM = rm -rf
 
 #DIRECTORIES
