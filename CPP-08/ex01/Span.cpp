@@ -45,7 +45,7 @@ int Span::shortestSpan(){
     std::vector<int> tempVector(*this->numbers);
     std::sort(tempVector.begin(), tempVector.end());
     if (size() <= 1)
-        throw Span::FullVectorException();
+        throw Span::SpanIsNotBigEnoughException();
     shortest = tempVector[1] - tempVector[0];
     for (size_t i = 2; i < tempVector.size(); i++){
         temp = tempVector[i] - tempVector[i - 1];
