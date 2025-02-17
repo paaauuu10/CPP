@@ -32,17 +32,17 @@ void identify(Base& p)
     try {
         (void)dynamic_cast<A&>(p);
         std::cout << "A\n";
-    } catch (std::bad_cast&) {}
+    } catch (const std::exception& e) {}
 
     try {
         (void)dynamic_cast<B&>(p);
         std::cout << "B\n";
-    } catch (std::bad_cast&) {}
+    } catch (const std::exception& e) {}
 
     try {
         (void)dynamic_cast<C&>(p);
         std::cout << "C\n";
-    } catch (std::bad_cast&) {}
+    } catch (const std::exception& e) {}
 }
 
 

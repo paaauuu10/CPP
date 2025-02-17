@@ -1,4 +1,5 @@
 #include "Base.hpp"
+#include <cstdlib> 
 
 int main(){    
     srand(time(0));
