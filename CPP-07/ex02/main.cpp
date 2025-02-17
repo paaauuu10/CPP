@@ -12,6 +12,12 @@ int main(int, char**)
     Array<int> numbers(MAX_VAL);
     int* mirror = new int[MAX_VAL];
     
+    try{
+        Array<int> numbers(0);
+    }catch(const std::exception& e){
+        std::cerr << e.what() << '\n';
+
+    }
     //STEP 2: Filling the array with random numbers
     srand(time(NULL));
     for (int i = 0; i < MAX_VAL; i++)

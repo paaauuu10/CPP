@@ -8,6 +8,8 @@ Array<T>::Array(){
 
 template <typename T>
 Array<T>::Array(unsigned int n){
+    if (n == 0)
+        throw std::range_error("0 is impossible");
     array = new T[n];
     len = n;
 }
