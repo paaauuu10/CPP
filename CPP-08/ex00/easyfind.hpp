@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   easyfind.hpp                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: pbotargu <pbotargu@student.42barcelona.    +#+  +:+       +#+        */
+/*   By: pbotargu <pbotargu@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/13 17:15:50 by pbotargu          #+#    #+#             */
-/*   Updated: 2025/02/13 17:15:51 by pbotargu         ###   ########.fr       */
+/*   Updated: 2025/02/18 11:13:35 by pbotargu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,16 +18,13 @@
 # include <stdexcept>
 
 template <typename T>
-int	easyfind(T const &container, int val)
+int easyfind(T const &container, int val)
 {
-    if (std::find(container.begin(), container.end(), val) == container.end())
+    typename T::const_iterator it = std::find(container.begin(), container.end(), val);
+    
+    if (it == container.end())
         throw std::out_of_range("Value not found");
-    
-    typename T::const_iterator it;
-    int pos;
-    
-    it = std::find(container.begin(), container.end(), val);
-    pos = std::distance(container.begin(), it);
-    return pos;
+
+    return std::distance(container.begin(), it);
 }
 #endif

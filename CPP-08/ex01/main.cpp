@@ -28,15 +28,15 @@ void testBasicSpan()
     Span sp(7);
     try
     {
-        sp.addNumber(6);
-        sp.addNumber(3);
-        sp.addNumber(17);
+        sp.addNumber(12);
+        sp.addNumber(5);
+        sp.addNumber(50);
         sp.addNumber(9);
-        sp.addNumber(11);
+        sp.addNumber(15);
         sp.addNumber(1);
-        sp.addNumber(-10);
-        std::cout << "Shortest Span: " << sp.shortestSpan() << std::endl; // 2
-        std::cout << "Longest Span: " << sp.longestSpan() << std::endl;   // 27
+        sp.addNumber(-13);
+        std::cout << "Shortest Span: " << sp.shortestSpan() << std::endl; // 3
+        std::cout << "Longest Span: " << sp.longestSpan() << std::endl;   // 63
     }
     catch (const std::exception &e)
     {
@@ -66,18 +66,18 @@ void testOverfillSpan()
 
 void testLargeSpan()
 {
-    Span s(1500);
+    Span s(10000);
     std::vector<int> vec;
-    for (int i = 0; i < 1500; i++)
+    for (int i = 0; i < 10000; i++)
     {
-        vec.push_back(i * 23);
+        vec.push_back(i);
     }
     try
     {
         s.addNumbers(vec.begin(), vec.end());
-        std::cout << "Shortest Span: " << s.shortestSpan() << std::endl; // 23
-        std::cout << "Longest Span: " << s.longestSpan() << std::endl;   // 34477
-        s.addNumber(42); // Excepción esperada
+        std::cout << "Shortest Span: " << s.shortestSpan() << std::endl;
+        std::cout << "Longest Span: " << s.longestSpan() << std::endl;
+        //s.addNumber(42); // Exception
     }
     catch (const std::exception &e)
     {
