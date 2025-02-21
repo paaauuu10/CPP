@@ -6,7 +6,7 @@
 #    By: pbotargu <pbotargu@student.42barcelona.    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/11/20 12:51:46 by pbotargu          #+#    #+#              #
-#    Updated: 2025/02/21 09:55:40 by pbotargu         ###   ########.fr        #
+#    Updated: 2025/02/21 11:36:13 by pbotargu         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -23,7 +23,7 @@ ORIGINAL = \033[0m
 
 CPP = c++
 FLAGS = -Wall -Wextra -Werror -std=c++98 -g
-SRC = 
+SRC = main.cpp BitcoinExchange.cpp
 RM = rm -rf
 
 #DIRECTORIES
