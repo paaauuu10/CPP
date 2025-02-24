@@ -1,11 +1,23 @@
 #include "BitcoinExchange.hpp"
 
-// Función para verificar si un año es bisiesto
+double stringToDouble(const std::string& str) {
+    std::istringstream iss(str);
+    double result;
+    if (!(iss >> result)) {
+        throw std::runtime_error("Error: No se pudo convertir a double");
+    }
+    char extra;
+    if (iss >> extra) {
+        throw std::runtime_error("Error: La cadena contiene caracteres no numéricos");
+    }
+
+    return result;
+}
+
 bool isLeapYear(int year) {
     return (year % 4 == 0 && year % 100 != 0) || (year % 400 == 0);
 }
 
-// Función para verificar si una fecha es válida
 bool isValidDate(const std::string& date) {
     if (date.size() != 10 || date[4] != '-' || date[7] != '-') {
         return false;
@@ -33,7 +45,8 @@ bool isValidDate(const std::string& date) {
 BitcoinExchange::BitcoinExchange(){
     // Abrimos el archivo data.csv y lo almacenamos en el containet map -> ddbb
 
-    std::ifstream ddbb("data.csv");
+    std::string str = "data.csv";
+    std::ifstream ddbb(str.c_str());
 
     if (!ddbb.is_open()){
         std::cout << "Error: impossible to open data.csv" << std::endl;
@@ -45,26 +58,18 @@ BitcoinExchange::BitcoinExchange(){
         std::string::size_type position = line.find(",");
         if (position != std::string::npos){
             std::string date = line.substr(0, position);
-            double price = std::stod(line.substr(position + 1, std::string::npos));
+            double price = stringToDouble(line.substr(position + 1, std::string::npos));
             data.insert(std::make_pair(date, price));
         }
     }
     ddbb.close();
 }
-/*BitcoinExchange::BitcoinExchange(const BitcoinExchange &other){
-    std::cout << other;
-}
-BitcoinExchange &BitcoinExchange::operator=(const BitcoinExchange &other){
-    if (&other)
-        std::cout << "HOLA";
-    return *this;
-}*/
 
 BitcoinExchange::~BitcoinExchange(){}
 
 void    BitcoinExchange::openFile(std::string name){
     
-    std::ifstream   input(name);
+    std::ifstream   input(name.c_str());
 
     if (!input.is_open()){
         std::cout << "Error opening input file" << std::endl;
@@ -85,7 +90,7 @@ void    BitcoinExchange::openFile(std::string name){
             continue ;
         }
         try{
-            double n_btc = std::stod(line.substr(position + 1, std::string::npos));
+            double n_btc = stringToDouble(line.substr(position + 1, std::string::npos));
             if (n_btc > 1000){
                 std::cout << "Error: too large a number." << std::endl;
                 continue;

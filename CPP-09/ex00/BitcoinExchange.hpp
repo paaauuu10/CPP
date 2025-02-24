@@ -6,6 +6,9 @@
 #include <fstream>
 #include <iomanip>
 #include <sstream>
+#include <cmath>
+#include <cstdlib>
+#include <algorithm>
 
 class BitcoinExchange{
     private:
