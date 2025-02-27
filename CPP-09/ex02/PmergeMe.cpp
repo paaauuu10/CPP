@@ -94,8 +94,10 @@ void PmergeMe::mergeDeque(int left, int right) {
         }
     }
 
-    while (i < mid) aux.push_back(deq[i++]);  // Copia el valor de deq[i]
-    while (j < right) aux.push_back(deq[j++]);  // Copia el valor de deq[j]
+    while (i < mid) 
+        aux.push_back(deq[i++]);  // Copia el valor de deq[i]
+    while (j < right) 
+        aux.push_back(deq[j++]);  // Copia el valor de deq[j]
 
     // Copia los elementos de aux a deq
     for (size_t k = 0; k < aux.size(); ++k) {
@@ -103,12 +105,10 @@ void PmergeMe::mergeDeque(int left, int right) {
     }
 }
 
-
-
 void PmergeMe::mergeVector(int left, int right) {
-    if (right - left <= 1) return; // Ya está ordenado si hay 1 elemento
+    if (right - left <= 1) return;
 
-    if (right - left == 2) { // Ordenar directamente 2 elementos
+    if (right - left == 2) {
         if (vec[left] > vec[left + 1]) {
             std::swap(vec[left], vec[left + 1]);
         }
@@ -127,14 +127,16 @@ void PmergeMe::mergeVector(int left, int right) {
     // Fusionar
     while (i < mid && j < right) {
         if (vec[i] < vec[j]) {
-            aux.push_back(vec[i++]);  // Copia el valor de vec[i] en lugar de moverlo
+            aux.push_back(vec[i++]);  // Copia el valor de vec[i]
         } else {
-            aux.push_back(vec[j++]);  // Copia el valor de vec[j] en lugar de moverlo
+            aux.push_back(vec[j++]);  // Copia el valor de vec[j]
         }
     }
 
-    while (i < mid) aux.push_back(vec[i++]);  // Copia el valor de vec[i]
-    while (j < right) aux.push_back(vec[j++]);  // Copia el valor de vec[j]
+    while (i < mid)
+        aux.push_back(vec[i++]);  // Copia el valor de vec[i]
+    while (j < right) 
+        aux.push_back(vec[j++]);  // Copia el valor de vec[j]
 
     // Copia los elementos de aux a vec
     std::copy(aux.begin(), aux.end(), vec.begin() + left); // std::copy es parte de C++98
