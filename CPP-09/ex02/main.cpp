@@ -19,7 +19,7 @@ int main(int argc, char **argv){
     for (int i = 1; i < argc; i++){
         if (validCommand(argv[i])){
             std::string input = argv[i];
-            vec.push_back(std::atoi(input.c_str()));
+            vec.push_back(atoi(input.c_str()));
         }
         else {
             std::cout << "Error" << std::endl <<

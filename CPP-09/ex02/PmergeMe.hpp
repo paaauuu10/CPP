@@ -4,6 +4,9 @@
 #include <iostream>
 #include <vector>
 #include <deque>
+#include <cstdlib>
+#include <iomanip>
+#include <ctime>
 
 class PmergeMe{
 
@@ -11,6 +14,7 @@ class PmergeMe{
         std::vector<int> vec;
         std::deque<int> deq;
         void mergeVector(int left, int right);
+        void mergeDeque(int left, int right);
         void printDeque(std::deque<int> deq);
         void printVector(std::vector<int> vec);
 
