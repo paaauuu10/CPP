@@ -4,11 +4,13 @@ double stringToDouble(const std::string& str) {
     std::istringstream iss(str);
     double result;
     if (!(iss >> result)) {
-        throw std::runtime_error("Error: No se pudo convertir a double");
+        throw std::invalid_argument("Error: No se pudo convertir a double");
     }
+
+    //Checks if there are extra non-numeric characters
     char extra;
     if (iss >> extra) {
-        throw std::runtime_error("Error: La cadena contiene caracteres no numéricos");
+        throw std::invalid_argument("Error: La cadena contiene caracteres no numéricos");
     }
 
     return result;
@@ -42,15 +44,15 @@ bool isValidDate(const std::string& date) {
 
     return day <= maxDay;
 }
+
 BitcoinExchange::BitcoinExchange(){
-    // Abrimos el archivo data.csv y lo almacenamos en el containet map -> ddbb
+    // Opening data.csv and saving it on container map -> ddbb
 
     std::string str = "data.csv";
     std::ifstream ddbb(str.c_str());
 
     if (!ddbb.is_open()){
-        std::cout << "Error: impossible to open data.csv" << std::endl;
-        return;
+        throw std::invalid_argument("Error: File .csv not found");
     }
     std::string line;
     std::getline(ddbb, line); // We are omitting header
@@ -92,7 +94,7 @@ void    BitcoinExchange::openFile(std::string name){
         try{
             double n_btc = stringToDouble(line.substr(position + 1, std::string::npos));
             if (n_btc > 1000){
-                std::cout << "Error: too large a number." << std::endl;
+                std::cout << "Error: too large number." << std::endl;
                 continue;
             }
             if (n_btc != std::fabs(n_btc)){

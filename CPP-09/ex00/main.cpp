@@ -7,6 +7,10 @@ int main(int argc, char **argv){
         return 0;
     }
     
-    BitcoinExchange btc;
-    btc.openFile(argv[1]);
+    try {
+        BitcoinExchange btc;
+        btc.openFile(argv[1]);
+    }catch (const std::exception &e){
+        std::cerr << "Exception caught: " << e.what() << std::endl;
+    }
 }
