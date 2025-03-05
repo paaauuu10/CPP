@@ -11,7 +11,7 @@ bool    validCommand(std::string str){
 
 int main(int argc, char **argv){
     if (argc < 2){
-        std::cout << "Usage: ./PmergeMe [string -> int sequence" << std::endl;
+        std::cout << "Usage: ./PmergeMe [string -> int sequence]" << std::endl;
         return 0;
     }
 

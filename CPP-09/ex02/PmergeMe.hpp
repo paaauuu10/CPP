@@ -20,8 +20,11 @@ class PmergeMe{
 
 
     public: 
-   // void mergeVector(std::vector<int> &vec, int left, int right);
-    void start(std::vector<int> vec);
+        PmergeMe();
+		PmergeMe(const PmergeMe &other);
+		PmergeMe &operator=(const PmergeMe &other);
+		~PmergeMe();
+        void start(std::vector<int> vec);
 };
 
 #endif
