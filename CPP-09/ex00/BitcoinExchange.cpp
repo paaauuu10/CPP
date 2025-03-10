@@ -104,9 +104,12 @@ void    BitcoinExchange::openFile(std::string name){
             std::map<std::string, double>::iterator it = data.lower_bound(date);
             if (it != data.end() && it->first == date) {
                 std::cout << date << " ==> " << n_btc << " = " << it->second * n_btc << std::endl;
-            } else {
+            } 
+            else if (it != data.begin()){
                 it--;
                 std::cout << date << " ==> " << n_btc << " = " << it->second * n_btc << std::endl;
+            } else {
+                std::cout << line << " ==> " << "Impossible to get a conversion." << std::endl; 
             }
         }catch(const std::exception& e){
             std::cout << "Error: bad imput ==> " << line << std::endl;
