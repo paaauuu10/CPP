@@ -64,7 +64,7 @@ void PmergeMe::start(std::vector<int> tmp){
                           CLOCKS_PER_SEC * 1000000;
     std::cout << "Time to process a range of " << vec.size() 
               << " elements with std::vector : " 
-              << std::fixed << std::setprecision(3) << timeMsVc << " us" 
+              << std::fixed << std::setprecision(1) << timeMsVc << " us" 
               << std::endl;
     std::cout << std::endl;
     
@@ -81,7 +81,7 @@ void PmergeMe::start(std::vector<int> tmp){
                           CLOCKS_PER_SEC * 1000000;
     std::cout << "Time to process a range of " << deq.size() 
               << " elements with std::vector : " 
-              << std::fixed << std::setprecision(3) << timeMsDq << " us" 
+              << std::fixed << std::setprecision(1) << timeMsDq << " us" 
               << std::endl;
     std::cout << std::endl;
 }
@@ -114,10 +114,7 @@ void PmergeMe::mergeDeque(int left, int right) {
         }
     }
 
-    while (i < mid) 
-        aux.push_back(deq[i++]);  // Copies deq[i]
-    while (j < right) 
-        aux.push_back(deq[j++]);  // Copies deq[j]
+
 
     // Copy elements from aux to deq.
     for (size_t k = 0; k < aux.size(); ++k) {
