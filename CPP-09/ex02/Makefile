@@ -6,7 +6,7 @@
 #    By: pbotargu <pbotargu@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/11/20 12:51:46 by pbotargu          #+#    #+#              #
-#    Updated: 2025/03/11 13:10:03 by pbotargu         ###   ########.fr        #
+#    Updated: 2025/03/11 13:26:33 by pbotargu         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -22,7 +22,7 @@ BLUE = \033[38;5;75m
 ORIGINAL = \033[0m
 
 CPP = c++
-FLAGS = -Wall -Wextra -Werror -std=c++98 -g -fsanitize=address
+FLAGS = -Wall -Wextra -Werror -std=c++98 -g
 SRC = main.cpp PmergeMe.cpp
 RM = rm -rf
 
