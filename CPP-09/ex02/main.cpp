@@ -1,35 +1,24 @@
 #include "PmergeMe.hpp"
 
-bool    validCommand(std::string str){
-    for (size_t i = 0; i < str.length(); i++){
-        if (!isdigit(str[i]) && !isspace(str[i]))/*hace falta mirar si es un espacio??*/
-            return false;
+int main(int argc, char **argv)
+{
+    if (argc < 3)
+    {
+        std::cout << "Usage: " << "./PmergeMe" << " int int ..." << std::endl;
+        return (1);
     }
-    return true;
+    try
+    {
+        PmergeMe::parse(argc, argv);
+        std::deque<int> deque = PmergeMe::createDeque(argc, argv);
+        std::vector<int> vec = PmergeMe::createVector(argc, argv);
 
-}
-
-int main(int argc, char **argv){
-    if (argc < 2){
-        std::cout << "Usage: ./PmergeMe [string -> int sequence]" << std::endl;
-        return 0;
+        PmergeMe::start(deque, vec, argc);
     }
-
-    std::vector<int> vec;
-    for (int i = 1; i < argc; i++){
-        if (validCommand(argv[i])){
-            std::string input = argv[i];
-            vec.push_back(atoi(input.c_str()));
-        }
-        else {
-            std::cout << "Error" << std::endl <<
-            "Not a positive int sequence." << std::endl;
-            return 1;
+    catch (std::exception & e)
+    {
+        std::cout << e.what() << std::endl;
+        return (1);
     }
-}
-
-    PmergeMe pmergeme;
-    pmergeme.start(vec);
-    
     return (0);
 }

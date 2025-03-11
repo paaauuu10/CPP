@@ -1,31 +1,243 @@
 #include "PmergeMe.hpp"
 
-PmergeMe::PmergeMe() {}
+PmergeMe::PmergeMe() {return ;}
 
-PmergeMe::~PmergeMe() {}
+PmergeMe::~PmergeMe() {return ;}
 
-PmergeMe::PmergeMe(const PmergeMe &other)
-{
-	*this = other;
-}
+PmergeMe::PmergeMe(const PmergeMe &other) { *this = other; }
 
 PmergeMe &PmergeMe::operator=(const PmergeMe &other)
 {
 	if (this != &other)
-	{
-		this->vec = other.vec;
-		this->deq = other.deq;
-	}
+        return (*this);
 	return (*this);
 }
 
-void PmergeMe::printDeque(std::deque<int> deq){
+bool    PmergeMe::_isDigit(char *input)
+{
+    int i = 0;
+
+    while (input[i])
+    {
+        if (!isdigit(input[i]))
+            return (true);
+        ++i;
+    }
+    return (false);
+}
+
+bool    PmergeMe::_isRepeated(char **argv)
+{
+    std::set<int>   seenNumbers;
+
+    for (int i = 1; argv[i]; ++i)
+    {
+        if (seenNumbers.find(atoi(argv[i])) != seenNumbers.end())
+            return (true);
+        seenNumbers.insert(atoi(argv[i]));
+    }
+
+    return (false);
+}
+
+bool    PmergeMe::_isSorted(char **argv)
+{
+    for (int i = 1; argv[i + 1]; ++i)
+    {
+        if (atoi(argv[i]) > atoi(argv[i + 1]))
+            return (false);
+    }
+    return (true);
+}
+
+void PmergeMe::parse(int argc, char **argv)
+{
+    for (int i = 1; i < argc; ++i)
+    {
+        if (_isDigit(argv[i]))
+            throw (std::invalid_argument("Error: there are NO numbers characters"));
+    }
+
+    if (_isRepeated(argv))
+        throw (std::invalid_argument("Error: You have a number repited"));
+    if (_isSorted(argv))
+        throw (std::invalid_argument("Ups! You're trying to order a list that it's already ordered!"));
+}
+
+std::deque<int> PmergeMe::createDeque(int argc, char **argv)
+{
+    std::deque<int> deque;
+
+    std::transform(argv + 1, argv + argc, std::back_inserter(deque), &atoi);
+    return (deque);
+}
+
+std::vector<int> PmergeMe::createVector(int argc, char **argv)
+{
+    std::vector<int> vec;
+    std::transform(argv + 1, argv + argc, std::back_inserter(vec), &atoi);
+    return vec;
+}
+
+void PmergeMe::start(std::deque<int> &deque, std::vector<int> &vec, int argc)
+{
+    clock_t    dequeTime[2];
+    clock_t    vectorTime[2];
+
+    std::cout << "Before deque: " << std::endl;
+    _printDeque(deque);
+    std::cout << std::endl;
+    dequeTime[0] = clock();
+    _mergeD(deque);
+    dequeTime[1] = clock();
+    std::cout << "After algorithm deque: " << std::endl;
+    _printDeque(deque);
+    std::cout << std::endl;
+
+
+    std::cout << "Before vec: " << std::endl;
+    _printVector(vec);
+    std::cout << std::endl;
+    vectorTime[0] = clock();
+    _mergeV(vec);
+    vectorTime[1] = clock();
+    std::cout << "After algorithm vec: " << std::endl;
+    _printVector(vec);
+    std::cout << std::endl;
+
+    double timeDeque = (static_cast<double>(dequeTime[1] - dequeTime[0]) / CLOCKS_PER_SEC) * 1000000;
+    double timeVector = (static_cast<double>(vectorTime[1] - vectorTime[0]) / CLOCKS_PER_SEC) * 1000000;
+    std::cout << "Time to process a range of " << argc - 1 << " elements with std::deque: " << timeDeque << " us" << std::endl;
+    std::cout << "Time to process a range of " << argc - 1 << " elements with std::vector: " << timeVector << " us" << std::endl;
+}
+
+
+void PmergeMe::_mergeV(std::vector<int> & vec)
+{
+    vec = _algorithmVector(vec);
+}
+
+std::string PmergeMe::toString(int a_value)
+{
+    std::ostringstream out;
+    out << a_value;
+    return out.str();
+}
+
+std::vector<int> PmergeMe::_algorithmVector(std::vector<int> &vec)
+{
+    if (vec.size() <= 1)
+        return (vec) ;
+
+    std::vector<int> left;
+    std::vector<int> right;
+    std::vector<int> sorted;
+
+    size_t i = 0;
+    for (std::vector<int>::const_iterator it = vec.begin(); it != vec.end(); ++it)
+    {
+        if (i < vec.size() / 2)
+            left.push_back(*it);
+        else
+            right.push_back(*it);
+        ++i;
+    }
+
+    left = _algorithmVector(left);
+    right = _algorithmVector(right);
+
+    while (!left.empty() && !right.empty())
+    {
+        if (left.front() < right.front())
+        {
+            sorted.push_back(left.front());
+            left.erase(left.begin());
+        }
+        else
+        {
+            sorted.push_back(right.front());
+            right.erase(right.begin());
+        }
+    }
+
+    while (!left.empty())
+    {
+        sorted.push_back(left.front());
+        left.erase(left.begin());
+    }
+
+    while (!right.empty())
+    {
+        sorted.push_back(right.front());
+        right.erase(right.begin());
+    }
+
+    return (sorted);
+}
+
+void    PmergeMe::_mergeD(std::deque<int> & deque)
+{
+    deque = _algorithmDeque(deque);
+}
+
+std::deque<int> PmergeMe::_algorithmDeque(std::deque<int> & deque)
+{
+    if (deque.size() <= 1)
+        return (deque);
+
+    std::deque<int> left;
+    std::deque<int> right;
+    std::deque<int> sorted;
+
+    size_t i = 0;
+    for (std::deque<int>::const_iterator it = deque.begin(); it != deque.end(); ++it)
+    {
+        if (i < deque.size() / 2)
+            left.push_back(*it);
+        else
+            right.push_back(*it);
+        ++i;
+    }
+
+    left = _algorithmDeque(left);
+    right = _algorithmDeque(right);
+
+    while (!left.empty() && !right.empty())
+    {
+        if (left.front() < right.front())
+        {
+            sorted.push_back(left.front());
+            left.pop_front();
+        }
+        else
+        {
+            sorted.push_back(right.front());
+            right.pop_front();
+        }
+    }
+
+    while (!left.empty())
+    {
+        sorted.push_back(left.front());
+        left.pop_front();
+    }
+
+    while (!right.empty())
+    {
+        sorted.push_back(right.front());
+        right.pop_front();
+    }
+
+    return (sorted);
+}
+
+void PmergeMe::_printDeque(std::deque<int> &deq){
     for (size_t i = 0; i < deq.size(); i++){
         if (deq.size() < 6)
             std::cout << " " << deq[i];
-        else if (i < 5)
+        else if (i < 4)
             std::cout << " " << deq[i];
-        else if (i > 4){
+        else if (i > 3){
             std::cout << " [...]";
             break ;
         }
@@ -33,13 +245,13 @@ void PmergeMe::printDeque(std::deque<int> deq){
     std::cout << std::endl;
 }
 
-void PmergeMe::printVector(std::vector<int> vec){
+void PmergeMe::_printVector(std::vector<int> &vec){
     for (size_t i = 0; i < vec.size(); i++){
         if (vec.size() < 6)
             std::cout << " " << vec[i];
-        else if (i < 5)
+        else if (i < 4)
             std::cout << " " << vec[i];
-        else if (i > 4){
+        else if (i > 3){
             std::cout << " [...]";
             break ;
         }
@@ -47,115 +259,6 @@ void PmergeMe::printVector(std::vector<int> vec){
     std::cout << std::endl;
 }
 
-void PmergeMe::start(std::vector<int> tmp){
-    std::vector<int>::iterator ite = tmp.end();
-    for (std::vector<int>::iterator it = tmp.begin(); it != ite; it++){
-        vec.push_back(*it);
-        deq.push_back(*it);
-    }
-    std::cout << std::endl << "Before:";
-    printVector(vec);
-    std::cout << "After:";
-    std::clock_t startV = std::clock();
-    mergeVector(0, vec.size());
-    std::clock_t endV = std::clock();
-    printVector(vec);
-    double timeMsVc = static_cast<double>(endV - startV) /
-                          CLOCKS_PER_SEC * 1000000;
-    std::cout << "Time to process a range of " << vec.size() 
-              << " elements with std::vector : " 
-              << std::fixed << std::setprecision(1) << timeMsVc << " us" 
-              << std::endl;
-    std::cout << std::endl;
-    
-    std::cout << "-------------------------------" << std::endl << std::endl; 
 
-    std::cout << "Before:";
-    printDeque(deq);
-    std::cout << "After:";
-    std::clock_t startD = std::clock();
-    mergeDeque(0, deq.size());
-    std::clock_t endD = std::clock();
-    printDeque(deq);
-    double timeMsDq = static_cast<double>(endD - startD) /
-                          CLOCKS_PER_SEC * 1000000;
-    std::cout << "Time to process a range of " << deq.size() 
-              << " elements with std::vector : " 
-              << std::fixed << std::setprecision(1) << timeMsDq << " us" 
-              << std::endl;
-    std::cout << std::endl;
-}
-
-void PmergeMe::mergeDeque(int left, int right) {
-    if (right - left <= 1) 
-        return; // Already ordered if there is only one number
-
-    if (right - left == 2) { // Only two numbers, we swap them
-        if (deq[left] > deq[left + 1]) {
-            std::swap(deq[left], deq[left + 1]);
-        }
-        return;
-    }
-
-    int mid = left + (right - left) / 2;
-    mergeDeque(left, mid);
-    mergeDeque(mid, right);
-
-    std::deque<int> aux;
-
-    int i = left, j = mid;
-
-    // Fusion
-    while (i < mid && j < right) {
-        if (deq[i] < deq[j]) {
-            aux.push_back(deq[i++]);  // Copies deq[i]
-        } else {
-            aux.push_back(deq[j++]);  // Copies deq[j]
-        }
-    }
-
-
-
-    // Copy elements from aux to deq.
-    for (size_t k = 0; k < aux.size(); ++k) {
-        deq[left + k] = aux[k];
-    }
-}
-
-void PmergeMe::mergeVector(int left, int right) {
-    if (right - left <= 1) return;
-
-    if (right - left == 2) {
-        if (vec[left] > vec[left + 1]) {
-            std::swap(vec[left], vec[left + 1]);
-        }
-        return;
-    }
-
-    int mid = left + (right - left) / 2;
-    mergeVector(left, mid);
-    mergeVector(mid, right);
-
-    std::vector<int> aux;
-    aux.reserve(right - left);
-
-    int i = left, j = mid;
-
-    // Fusion
-    while (i < mid && j < right) {
-        if (vec[i] < vec[j]) {
-            aux.push_back(vec[i++]);  // Copies vec[i]
-        } else {
-            aux.push_back(vec[j++]);  // Copies vec[j]
-        }
-    }
-
-    while (i < mid)
-        aux.push_back(vec[i++]);  // Copies vec[i]
-    while (j < right) 
-        aux.push_back(vec[j++]);  // Copies vec[j]
-
-    // Copy elements from aux to vec
-    std::copy(aux.begin(), aux.end(), vec.begin() + left);
-}
-
+PmergeMe::InvalidInputException::InvalidInputException(std::string const & message) \
+    : std::invalid_argument(message) {return ;}

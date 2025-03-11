@@ -43,8 +43,6 @@ void RPN::polishOperation(std::string polish) {
             stack.pop();
             first = stack.top();
             stack.pop();
-
-            // 🚀 Comprobaciones para evitar desbordamiento
             if (polish[i] == '+') {
                 if ((second > 0 && first > std::numeric_limits<int>::max() - second) ||
                     (second < 0 && first < std::numeric_limits<int>::min() - second)) {
