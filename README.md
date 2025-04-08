@@ -1,7 +1,7 @@
 # CPP MODULES (00-09) - 42 SCHOOL
 
 ## OVERVIEW
-This repository contains my solutions for the C++ modules (00 through 09) from the 42 School curriculum. Each module introduces fundamental C++ concepts, progressively building from basic syntax to advanced features.
+This repository contains my solutions for the C++ modules (00 through 09) from the 42 School curriculum. Each module introduces fundamental C++ concepts, progressively building from basic syntax to advanced features
 
 ## MODULE BREAKDOWN
 
